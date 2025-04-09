@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import myCard from './template-front.png';
+import myCardImage from './template-front.png';
 
 const CardGenerator = () => {
   const [numCards, setNumCards] = useState(18);
@@ -8,11 +8,15 @@ const CardGenerator = () => {
   const [cardHeight, setCardHeight] = useState(2.1);
   const [cardColor, setCardColor] = useState("#f0f0f0");
   const [borderColor, setBorderColor] = useState("#000");
+  const [templateType, setTemplateType] = useState("image"); // "image" or "text"
+
+  const cards = Array.from({ length: numCards }, (value, index) => `Card ${index + 1}`);
+  
   const [unit, setUnit] = useState("in"); // 'in' or 'cm'
 
-  const cards = Array.from({ length: numCards }, (_, index) => `Card ${index + 1}`);
-
-  const convertToInches = (value) => unit === "cm" ? value / 2.54 : value;
+  const convertToInches = (value) => {
+    return unit === "cm" ? value / 2.54 : value;
+  };
 
   const handleWidthChange = (e) => {
     const val = parseFloat(e.target.value) || 0;
@@ -45,6 +49,7 @@ const CardGenerator = () => {
             <option value="cm">centimeters</option>
           </select>
         </label>
+
         <label>
           Card Width ({unit}):
           <input
@@ -54,6 +59,7 @@ const CardGenerator = () => {
             onChange={handleWidthChange}
           />
         </label>
+
         <label>
           Card Height ({unit}):
           <input
@@ -79,6 +85,14 @@ const CardGenerator = () => {
             onChange={(e) => setBorderColor(e.target.value)}
           />
         </label>
+
+        <label>
+          Select Template:
+          <select value={templateType} onChange={(e) => setTemplateType(e.target.value)}>
+            <option value="image">Image</option>
+            <option value="text">Text</option>
+          </select>
+        </label>
       </div>
 
       <div
@@ -86,7 +100,8 @@ const CardGenerator = () => {
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(2, ${cardWidth}in)`,
-          gap: "0px",
+          gridTemplateRows: `repeat(auto-fill, ${cardHeight}in)`,
+          gap: "0px", // No gap between cards
           width: `${2 * cardWidth}in`,
           margin: "0 auto",
         }}
@@ -103,42 +118,81 @@ const CardGenerator = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              borderRadius: "0px",
               boxSizing: "border-box",
-              overflow: "hidden",
+              overflow: "hidden", // Ensure image fits
               flexDirection: "column",
             }}
           >
-            <img
-              src={myCard}
-              alt={text}
+            {templateType === "image" ? (
+              <>
+              <img
+                src={myCardImage}
+                alt={text}
+                style={{
+                  maxWidth: "90%",
+                  maxHeight: "60%",
+                  objectFit: "contain",
+                  marginBottom: "10px", // Ensure some space between image and title
+                }}
+              />
+              <h3 style={{ color: "red", textAlign: "center" }}>{text}</h3>
+            </>
+            ) : (
+              <>
+                <h3 style={{ color: "red", textAlign: "center" }}>{text}</h3>
+                <p style={{ textAlign: "justify" }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi. 
+                  Vestibulum in leo vel tortor facilisis pharetra ut nec ante.
+                </p>
+              </>
+            )}
+
+            {/* Corner lines for printing */}
+            <div
               style={{
-                maxWidth: "90%",
-                maxHeight: "70%",
-                objectFit: "contain",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "10px",
+                height: "10px",
+                borderTop: `1px solid ${borderColor}`,
+                borderLeft: `1px solid ${borderColor}`,
               }}
-            />
-            <p>{text}</p>
-            {/* Corners */}
-            {["TopLeft", "TopRight", "BottomLeft", "BottomRight"].map((corner) => {
-              const isTop = corner.includes("Top");
-              const isLeft = corner.includes("Left");
-              return (
-                <div
-                  key={corner}
-                  style={{
-                    position: "absolute",
-                    [isTop ? "top" : "bottom"]: 0,
-                    [isLeft ? "left" : "right"]: 0,
-                    width: "10px",
-                    height: "10px",
-                    borderTop: isTop ? `1px solid ${borderColor}` : "none",
-                    borderBottom: !isTop ? `1px solid ${borderColor}` : "none",
-                    borderLeft: isLeft ? `1px solid ${borderColor}` : "none",
-                    borderRight: !isLeft ? `1px solid ${borderColor}` : "none",
-                  }}
-                />
-              );
-            })}
+            ></div>
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                width: "10px",
+                height: "10px",
+                borderTop: `1px solid ${borderColor}`,
+                borderRight: `1px solid ${borderColor}`,
+              }}
+            ></div>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "10px",
+                height: "10px",
+                borderBottom: `1px solid ${borderColor}`,
+                borderLeft: `1px solid ${borderColor}`,
+              }}
+            ></div>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                right: 0,
+                width: "10px",
+                height: "10px",
+                borderBottom: `1px solid ${borderColor}`,
+                borderRight: `1px solid ${borderColor}`,
+              }}
+            ></div>
           </div>
         ))}
       </div>

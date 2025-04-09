@@ -1,3 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 .no-print {
   margin-bottom: 1rem;
   display: flex;
@@ -18,11 +29,15 @@
   }
 
   .card {
+    margin: 0; /* Ensure no margin between cards */
+    padding: 0; /* Ensure no padding inside cards */
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .cards-container {
+    margin: 0; /* Remove any margin around the cards container */
+    padding: 0; /* Ensure there's no padding either */
     page-break-inside: avoid;
   }
 
