@@ -11,7 +11,7 @@ const CardGenerator = () => {
   const [templateType, setTemplateType] = useState("image"); // "image" or "text"
 
   const cards = Array.from({ length: numCards }, (value, index) => `Card ${index + 1}`);
-  
+
   const [unit, setUnit] = useState("in"); // 'in' or 'cm'
 
   const convertToInches = (value) => {
@@ -126,25 +126,27 @@ const CardGenerator = () => {
           >
             {templateType === "image" ? (
               <>
-              <img
-                src={myCardImage}
-                alt={text}
-                style={{
-                  maxWidth: "90%",
-                  maxHeight: "60%",
-                  objectFit: "contain",
-                  marginBottom: "10px", // Ensure some space between image and title
-                }}
-              />
-              <h3 style={{ color: "red", textAlign: "center" }}>{text}</h3>
-            </>
+                <img
+                  src={myCardImage}
+                  alt={text}
+                  style={{
+                    maxWidth: "90%",
+                    maxHeight: "60%",
+                    objectFit: "contain",
+                    marginBottom: "10px", // Ensure some space between image and title
+                  }}
+                />
+                <div className="title">{text}</div>
+              </>
             ) : (
               <>
-                <h3 style={{ color: "red", textAlign: "center" }}>{text}</h3>
-                <p style={{ textAlign: "justify" }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi. 
+                <div className="title">Title</div>
+                <div className="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi.
                   Vestibulum in leo vel tortor facilisis pharetra ut nec ante.
-                </p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi.
+                  Vestibulum in leo vel tortor facilisis pharetra ut nec ante.
+                </div>
               </>
             )}
 

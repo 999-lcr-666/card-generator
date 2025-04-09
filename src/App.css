@@ -55,8 +55,23 @@ body {
   
   .card p {
     text-align: justify;
-    margin: 10px 0 0 0;
+    margin: 10px 10px;
     line-height: 1.5;
     text-align-last: justify; /* Ensures the last line is justified */
   }
+}
+
+
+.card .title {
+  color: red; /* Title color */
+  font-size: 1em; /* Title size */
+  font-weight: bold; /* Optional: make the title bold */
+  /*margin-bottom: 15px; Space below the title */
+}
+
+.card .description {
+  margin: 10px 0; /* Add margin between paragraphs */
+  line-height: 1; /* Optional: increases line height for readability */
+  text-align: justify; /* Justify the paragraph text */
+  max-width: 90%; /* Optional: limit width for better layout */
 }
