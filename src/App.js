@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import Papa from 'papaparse';
+import React, { useEffect, useState } from "react";
 import './App.css';
-import myCardImage from './template-front.png';
 import loadImages from './imageLoader';
 
 
@@ -11,6 +11,9 @@ const CardGenerator = () => {
   const [cardColor, setCardColor] = useState("#f0f0f0");
   const [borderColor, setBorderColor] = useState("#000");
   const [templateType, setTemplateType] = useState("image"); // "image" or "text"
+  const [csvData, setCsvData] = useState([]); // pour l'import des csv
+  const [loading, setLoading] = useState(true);  // Track loading state
+
 
   const cards = Array.from({ length: numCards }, (value, index) => `Card ${index + 1}`);
 
@@ -34,23 +37,85 @@ const CardGenerator = () => {
   const displayHeight = unit === "cm" ? (cardHeight * 2.54).toFixed(2) : cardHeight;
 
 
+// ======================================
+// Load images from CSV
+// ======================================
 
-  // Load the images
+/*
+useEffect(() => {
+  fetch('/aws.csv')
+    .then(response => response.text())
+    .then(text => {
+      const result = Papa.parse(text, { header: true });
+      setCsvData(result.data); // array of objects
+      console.log('CSV Parsed:', result.data);
+    });
+}, []);
+*/
+
+useEffect(() => {
+  fetch('/aws4.csv')
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return response.text();
+    })
+    .then((text) => {
+      const result = Papa.parse(text, {
+        header: true,
+        skipEmptyLines: true,  // Skip any empty lines
+      });
+      // Sort the data by a specific column (e.g., "serviceName")
+      const sortedData = result.data.sort((a, b) => {
+        const nameA = a.title ? a.title.toUpperCase() : ''; // Default to empty string if undefined
+        const nameB = b.title ? b.title.toUpperCase() : ''; // Default to empty string if undefined
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0; // If they're the same, leave their order unchanged
+      });
+      setCsvData(sortedData);
+      console.log('CSV Parsed:', sortedData);
+    })
+    .catch((error) => {
+      console.error('Error loading or parsing CSV:', error);
+    })
+    .finally(() => {
+      setLoading(false);  // Set loading to false once fetch is done
+    });
+}, []);
+
+if (loading) {
+  return <div>Loading...</div>; // Show loading message while waiting for data
+}
+
+
+
+
+
+// ======================================
+// Load the images
+// ======================================
+
   const images = loadImages();
   console.log('Loaded images:', images);
+
+// Find matching CSV row by service name
+const serviceName = csvData.find(row =>
+    row.serviceName
+);
 
 
   // Example of card data with image names
   // Create card data dynamically based on available images
   const cardData = images.map((image, index) => ({
     name: `Card ${index + 1}`,
-    imageName: image?.fileName || 'default-image.jpg',  // Use a default image if no fileName
+    imageName: image?.filename || 'default-image.jpg',  // Use a default image if no fileName
+    serviceName: serviceName,
   }));
   console.log('Card Data:', cardData);
 
 
   // Function to get the image path
-  const getCardImage = (imageName) => {
+  const getCardImage = (cathegory,imageName) => {
     // Log to see if imageName is what you expect
     console.log('Received imageName:', imageName);
 
@@ -61,11 +126,10 @@ const CardGenerator = () => {
     }
 
     // Generate the image path
-    const imagePath = `/images/${imageName}`;
+    const imagePath = `/images/${cathegory}/${imageName}.png`;
     console.log('Generated Image Path:', imagePath);
     return imagePath;
   };
-
 
 
 
@@ -166,9 +230,9 @@ const CardGenerator = () => {
             {templateType === "image" ? (
               <>
                 <img
-                  src={getCardImage(cardData[index]?.imageName)} // Dynamically set image path
-                  alt={cardData[index]?.name}
-                  onError={(e) => (e.target.src = myCardImage)} // Fallback to broken image if error
+                  src={getCardImage(csvData[index]?.cathegory, csvData[index]?.filename)} // Dynamically set image path
+                  alt={csvData[index]?.filename}
+                  onError={(e) => (e.target.src = "/images/broken-image.png")} // Fallback to broken image if error
                   style={{
                     maxWidth: "90%",
                     maxHeight: "60%",
@@ -176,19 +240,21 @@ const CardGenerator = () => {
                     marginBottom: "10px", // Ensure some space between image and title
                   }}
                 />
-                <div className="title">
-                  {cardData[index]?.imageName.split('.')[0].replace(/-/g, ' ')} {/* Display image name without extension */}
+                <div className="title"
+                style={{ color: `#${csvData[index]?.color?.replace('#', '')}` }}
+                >
+                  {csvData[index]?.filename.split('.')[0].replace(/-/g, ' ')} {/* Display image name without extension */}
                 </div>
               </>
             ) : (
               <>
-                <div className="title">Title</div>
-                <div className="description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi.
-                  Vestibulum in leo vel tortor facilisis pharetra ut nec ante.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut interdum mi.
-                  Vestibulum in leo vel tortor facilisis pharetra ut nec ante.
-                </div>
+                  <div
+                    className="title"
+                    style={{ color: `#${csvData[index]?.color?.replace('#', '')}` }}
+                  >{csvData[index]?.title || "No Title"}</div>
+                  <div className="description">
+                    {csvData[index]?.description || "No description available."}
+                  </div>
               </>
             )}
 

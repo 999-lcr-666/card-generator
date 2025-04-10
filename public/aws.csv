@@ -1,4 +1,4 @@
-type;amazon;service-name;abb;file-name;description
+type;amazon;title;abb;file-name;description
 Analytics;Amazon;Athena;;Athena;A serverless interactive query service that allows you to analyze data stored in Amazon S3 using standard SQL. No infrastructure to manage, and you pay only for the queries you run.
 Analytics;AWS;Data Exchange;;Data-Exchange;A service that enables customers to find, subscribe to, and use third-party data in the AWS Cloud. Ideal for businesses needing external data sources for analytics.
 Analytics;Amazon;Elastic MapReduce;EMR;Elastic-MapReduce;A managed big data service that supports Apache Hadoop, Spark, Presto, and other frameworks for processing large datasets quickly at scale.

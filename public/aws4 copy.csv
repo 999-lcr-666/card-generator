@@ -1,0 +1,129 @@
+color;cathegory;amazon;title;abbr;filename;description
+8C4FFF;Analytics;Amazon;Athena;;Athena;A serverless interactive query service that allows you to analyze data stored in Amazon S3 using standard SQL. No infrastructure to manage, and you pay only for the queries you run.
+8C4FFF;Analytics;AWS;Data Exchange;;Data-Exchange;A service that enables customers to find, subscribe to, and use third-party data in the AWS Cloud. Ideal for businesses needing external data sources for analytics.
+8C4FFF;Analytics;Amazon;Elastic MapReduce;EMR;Elastic-MapReduce;A managed big data service that supports Apache Hadoop, Spark, Presto, and other frameworks for processing large datasets quickly at scale.
+8C4FFF;Analytics;AWS;Glue;;Glue;A serverless ETL (Extract, Transform, Load) service that automates data preparation and transformation for analytics and machine learning. It includes a Data Catalog for metadata management.
+8C4FFF;Analytics;Amazon;Kinesis;;Kinesis;A real-time data streaming service that collects and processes large-scale streaming data for analytics, machine learning, and monitoring. It includes Kinesis Data Streams, Kinesis Data Firehose, and Kinesis Analytics.
+8C4FFF;Analytics;Amazon;Managed Streaming for Apache Kafka;MSK;Managed-Streaming-for-Apache-Kafka;A fully managed Apache Kafka service for building real-time event-driven applications. Reduces operational overhead for managing Kafka clusters.
+8C4FFF;Analytics;Amazon;OpenSearch Service;;OpenSearch-Service;A managed search and analytics service (formerly Amazon Elasticsearch Service) used for log analytics, full-text search, and monitoring.
+8C4FFF;Analytics;Amazon;QuickSight;;QuickSight;A cloud-powered business intelligence (BI) tool that creates interactive dashboards and reports from multiple data sources. Uses machine learning insights for anomaly detection.
+8C4FFF;Analytics;Amazon;Redshift;;Redshift;A fully managed data warehouse that enables fast querying of large datasets. Uses columnar storage and massively parallel processing (MPP) to deliver high performance.
+E7157B;Application-Integration;Amazon;EventBridge;;EventBridge;A serverless event bus that connects applications using events from AWS services, SaaS applications, or custom sources. Useful for real-time event-driven architectures.
+E7157B;Application-Integration;Amazon;Simple Notification Service;SNS;Simple-Notification-Service;A publish-subscribe (pub/sub) messaging service for sending notifications via SMS, email, or push messages. Integrates with other AWS services like Lambda and SQS.
+E7157B;Application-Integration;Amazon;Simple Queue Service;SQS;Simple-Queue-Service;A fully managed message queueing service that enables decoupling of application components for scalability and fault tolerance. Supports Standard (high-throughput) and FIFO (ordered) queues.
+E7157B;Application-Integration;AWS;Step Functions;;Step-Functions;A serverless workflow orchestration service for automating and managing multi-step processes across AWS services using a visual workflow.
+DD344C;Business-Applications;Amazon;Connect;;Connect;A cloud-based contact center service that allows businesses to set up customer support operations with AI-driven analytics and voice/chat capabilities.
+DD344C;Business-Applications;Amazon;Simple Email Service;SES;Simple-Email-Service;A scalable email-sending platform for transactional emails, marketing campaigns, and automated notifications. Supports inbound and outbound email processing.
+7AA116;Cloud-Financial-Management;AWS;Billing Conductor;;Billing-Conductor;A service that allows organizations to customize and manage billing structures, useful for companies handling multiple accounts.
+7AA116;Cloud-Financial-Management;AWS;Budgets;;Budgets;A tool to set cost and usage limits with alerts when spending exceeds predefined budgets. Helps control AWS costs proactively.
+7AA116;Cloud-Financial-Management;AWS;Cost and Usage Report;;Cost-and-Usage-Report;Provides detailed AWS billing data, including resource-level spending. Used for financial analysis and chargeback reports.
+7AA116;Cloud-Financial-Management;AWS;Cost Explorer;;Cost-Explorer;A visual tool for analyzing AWS costs and usage over time, forecasting spending, and identifying savings opportunities.
+7AA116;Cloud-Financial-Management;AWS;Marketplace;;Marketplace;An online store where customers can find, buy, and deploy third-party software solutions optimized for AWS.
+ED7100;Compute;AWS;Batch;;Batch;A managed service for running batch processing jobs at scale. Dynamically provisions compute resources based on workload needs.
+ED7100;Compute;Amazon;Elastic Compute Cloud;EC2;Elastic-Compute-Cloud;Scalable virtual servers in the cloud. Offers various instance types (On-Demand, Reserved, Spot, Dedicated) to optimize cost and performance.
+ED7100;Compute;AWS;Elastic Beanstalk;;Elastic-Beanstalk;A PaaS (Platform as a Service) offering that simplifies deploying and scaling web applications. Supports Java, Python, Node.js, PHP, Ruby, and more. AWS Elastic Beanstalk is a service for deploying and scaling web applications and services. Upload your code and Elastic Beanstalk automatically handles the deployment—from capacity provisioning, load balancing, and auto scaling to application health monitoring. 
+ED7100;Compute;Amazon;Lightsail;;Lightsail;A simplified cloud platform offering VPS (Virtual Private Servers) with pre-configured compute, storage, and networking for small applications and websites. It is designed for developers, startups, and small businesses who need a quick and easy way to deploy applications and websites without managing complex cloud infrastructure. 
+ED7100;Compute;AWS;Local Zones;;Local-Zones;Extends AWS services closer to end-users for ultra-low latency applications, useful for gaming, media, and real-time processing.
+ED7100;Compute;AWS;Outposts;;Outposts;Brings AWS infrastructure on-premises, allowing organizations to run AWS services in their own data centers with full AWS integration.
+ED7100;Compute;AWS;Wavelength;;Wavelength;Enables ultra-low-latency computing at the network edge by embedding AWS compute infrastructure inside telecom 5G networks.
+ED7100;Containers;Amazon;Elastic Container Registry;ECR;Elastic-Container-Registry;A fully managed Docker container registry that securely stores, manages, and deploys container images.
+ED7100;Containers;Amazon;Elastic Container Service;ECS;Elastic-Container-Service;A high-performance container orchestration service for running Docker containers. Supports AWS Fargate for serverless execution.
+ED7100;Containers;Amazon;Elastic Kubernetes Service;EKS;Elastic-Kubernetes-Service;A fully managed Kubernetes service that simplifies running containerized applications using Kubernetes.
+C925D1;Customer-Engagement;AWS;Activate for Startups;;Activate-for-Startups;A program providing AWS credits, training, and support to startups, helping them build and scale on AWS.
+C925D1;Customer-Engagement;AWS;IQ;;IQ;A marketplace connecting customers with AWS-certified experts for project-based work and consultation.
+C925D1;Customer-Engagement;AWS;Managed Services;AMS;Managed-Services;A fully managed cloud operations service for enterprises, ensuring security, compliance, and infrastructure management.
+C925D1;Customer-Engagement;AWS;Support;;Support;Provides technical assistance and troubleshooting through various support plans (Basic, Developer, Business, Enterprise).
+C925D1;Database;Amazon;Aurora;;Aurora;A high-performance, highly available relational database compatible with MySQL and PostgreSQL. Offers up to 5x faster performance than standard databases.
+C925D1;Database;Amazon;DynamoDB;;DynamoDB;A fully managed NoSQL database that offers millisecond latency, built-in security, backup, and automatic scaling. Ideal for web apps, gaming, and IoT.
+C925D1;Database;Amazon;MemoryDB for Redis;;MemoryDB-for-Redis;A managed in-memory database compatible with Redis, offering low-latency and high-throughput performance for caching and real-time applications.
+C925D1;Database;Amazon;Neptune;;Neptune;A graph database service optimized for relationships and complex queries. Used in fraud detection, social networks, and recommendation engines.
+C925D1;Database;Amazon;Relational Database Service;RDS;Relational-Database-Service;A managed relational database service supporting MySQL, PostgreSQL, SQL Server, MariaDB, and Oracle. Handles backup, patching, and scaling automatically.
+C925D1;Developer-Tools;AWS;AppConfig;;AppConfig;A feature of AWS Systems Manager that helps manage application configuration changes while minimizing deployment risks.
+C925D1;Developer-Tools;AWS;Command Line Interface;CLI;Command-Line-Interface;A command-line tool for managing AWS services using scripts or commands instead of the AWS Management Console.
+C925D1;Developer-Tools;AWS;Cloud9;;Cloud9;A cloud-based IDE (Integrated Development Environment) for writing, debugging, and running code within a browser.
+C925D1;Developer-Tools;AWS;CloudShell;;CloudShell;A browser-based command-line terminal that provides direct access to AWS services without local setup.
+C925D1;Developer-Tools;AWS;CodeArtifact;;CodeArtifact;A fully managed artifact repository service that stores and retrieves software packages like Maven, NPM, and PyPI.
+C925D1;Developer-Tools;AWS;CodeBuild;;CodeBuild;A fully managed CI/CD service that compiles source code, runs tests, and produces deployable software artifacts.
+C925D1;Developer-Tools;AWS;CodeCommit;;CodeCommit;A secure, scalable, and fully managed Git-based source control repository for private projects.
+C925D1;Developer-Tools;AWS;CodeDeploy;;CodeDeploy;Automates application deployments to EC2, on-premises servers, and Lambda functions with rollback capabilities.
+C925D1;Developer-Tools;AWS;CodePipeline;;CodePipeline;A CI/CD service that automates the build, test, and deployment processes for faster software delivery.
+C925D1;Developer-Tools;AWS;CodeStar;;CodeStar;A platform that helps quickly develop, build, and deploy applications in AWS with integrated CI/CD tools.
+C925D1;Developer-Tools;AWS;X-Ray;;X-Ray;A tracing service that helps analyze and debug distributed applications by visualizing service interactions.
+01A88D;End-User-Computing;Amazon;AppStream;;AppStream;A managed service that securely delivers virtualized applications to users through a web browser.
+01A88D;End-User-Computing;Amazon;WorkSpaces;;WorkSpaces;A fully managed Desktop-as-a-Service (DaaS) that provides cloud-based virtual desktops.
+01A88D;End-User-Computing;Amazon;WorkSpaces Web;;WorkSpaces-Web;A secure browser-based access solution for corporate web applications, reducing endpoint risks.
+DD344C;Front-End-Web-Mobile;AWS;Amplify;;Amplify;A set of tools and services to build, deploy, and host scalable mobile and web applications. Supports authentication, APIs, and real-time data.
+DD344C;Front-End-Web-Mobile;AWS;AppSync;;AppSync;A GraphQL API service that allows applications to retrieve only the necessary data from AWS data sources like DynamoDB and Lambda.
+DD344C;Front-End-Web-Mobile;AWS;Device Farm;;Device-Farm;A testing service that allows developers to test mobile apps on real devices hosted in the AWS cloud.
+7AA116;Internet-of-Things;AWS;IoT Core;;IoT-Core;A managed cloud platform that connects IoT devices securely and allows them to send data to AWS for analytics and machine learning.
+7AA116;Internet-of-Things;AWS;IoT Greengrass;;IoT-Greengrass;An edge computing service that allows devices to run AWS Lambda functions, machine learning models, and sync data locally without continuous cloud connectivity.
+01A88D;Machine-Learning;Amazon;Comprehend;;Comprehend;A natural language processing (NLP) service that uses AI to analyze text for sentiment, key phrases, and topic detection.
+01A88D;Machine-Learning;Amazon;Kendra;;Kendra;An AI-powered search service that improves information retrieval across documents and databases.
+01A88D;Machine-Learning;Amazon;Lex;;Lex;A managed chatbot service that uses the same deep learning technology as Alexa to build conversational interfaces.
+01A88D;Machine-Learning;Amazon;Polly;;Polly;A text-to-speech service that converts written text into lifelike speech, supporting multiple languages and voices.
+01A88D;Machine-Learning;Amazon;Rekognition;;Rekognition;A computer vision service that detects objects, faces, text, and inappropriate content in images and videos.
+01A88D;Machine-Learning;Amazon;SageMaker;;SageMaker;A fully managed service that allows developers to build, train, and deploy machine learning models at scale.
+01A88D;Machine-Learning;Amazon;Textract;;Textract;An AI service that automatically extracts text, handwriting, and structured data from documents, such as invoices and forms.
+01A88D;Machine-Learning;Amazon;Transcribe;;Transcribe;A speech-to-text service that automatically converts spoken words from audio files into text with timestamps.
+01A88D;Machine-Learning;Amazon;Translate;;Translate;A real-time language translation service that supports automatic detection and translation between multiple languages.
+E7157B;Management-and-Governance;AWS;Auto Scaling;;Auto-Scaling;A service that automatically adjusts compute resources based on demand, ensuring cost efficiency and performance.
+E7157B;Management-and-Governance;AWS;CloudFormation;;CloudFormation;An infrastructure-as-code (IaC) service that provisions AWS resources using declarative templates.
+E7157B;Management-and-Governance;AWS;CloudTrail;;CloudTrail;A logging service that tracks API activity and AWS account changes for auditing and security analysis.
+E7157B;Management-and-Governance;Amazon;CloudWatch;;CloudWatch;A monitoring and observability service that collects and visualizes logs, metrics, and alerts for AWS resources.
+E7157B;Management-and-Governance;AWS;Compute Optimizer;;Compute-Optimizer;A service that analyzes and recommends optimizations for compute resources like EC2, Lambda, and ECS.
+E7157B;Management-and-Governance;AWS;Config;;Config;A service that tracks AWS resource configurations and compliance over time, helping with security audits.
+E7157B;Management-and-Governance;AWS;Control Tower;;Control-Tower;Automates multi-account governance following AWS best practices, simplifying large-scale deployments.
+E7157B;Management-and-Governance;AWS;Health Dashboard;;Health-Dashboard;Provides real-time health status of AWS services and personalized impact notifications for your account.
+E7157B;Management-and-Governance;AWS;Launch Wizard;;Launch-Wizard;Simplifies deployment of enterprise applications such as SAP and Microsoft SQL Server on AWS.
+E7157B;Management-and-Governance;AWS;License Manager;;License-Manager;Helps organizations track, manage, and enforce software licensing policies to prevent overuse or compliance issues.
+E7157B;Management-and-Governance;AWS;Management Console;;Management-Console;A web-based interface for accessing and managing AWS services.
+E7157B;Management-and-Governance;AWS;Organizations;;Organizations;A service that enables centralized management of multiple AWS accounts, enforcing policies and consolidated billing.
+E7157B;Management-and-Governance;AWS;Resource Groups and Tag Editor;;Resource-Groups-and-Tag-Editor;Helps organize and manage AWS resources using tags, simplifying cost allocation and monitoring.
+E7157B;Management-and-Governance;AWS;Service Catalog;;Service-Catalog;Allows businesses to create and manage approved IT service portfolios, ensuring compliance and consistency.
+E7157B;Management-and-Governance;AWS;Systems Manager;;Systems-Manager;A suite of tools for automating operations, managing infrastructure, and troubleshooting AWS resources.
+E7157B;Management-and-Governance;AWS;Trusted Advisor;;Trusted-Advisor;Provides real-time recommendations for security, performance, cost optimization, and best practices.
+E7157B;Management-and-Governance;AWS;Well-Architected Tool;;Well-Architected-Tool;Guides businesses in designing secure, high-performing, and cost-efficient cloud architectures.
+01A88D;Migration-and-Transfer;AWS;Application Discovery Service;;Application-Discovery-Service;Gathers data on on-premises workloads to plan cloud migrations.
+01A88D;Migration-and-Transfer;AWS;Application Migration Service;;Application-Migration-Service;Automates the lift-and-shift migration of applications to AWS with minimal downtime.
+01A88D;Migration-and-Transfer;AWS;Database Migration Service;DMS;Database-Migration-Service;Moves databases to AWS with near-zero downtime, supporting homogeneous (same DB engine) and heterogeneous (different DB engines migrations.
+01A88D;Migration-and-Transfer;AWS;Migration Hub;;Migration-Hub;Centralized tool to track, monitor, and manage application migrations across AWS services.
+01A88D;Migration-and-Transfer;AWS;Schema Conversion Tool;SCT;Schema-Conversion-Tool;Converts database schemas when moving between different database engines (e.g., Oracle → Aurora).
+01A88D;Migration-and-Transfer;AWS;Snow Family;;Snow-Family;Includes AWS Snowcone, Snowball, and Snowmobile for transferring large volumes of data physically when network transfer isn't feasible.
+01A88D;Migration-and-Transfer;AWS;Transfer Family;;Transfer-Family;Securely transfers files via SFTP, FTPS, and FTP to and from Amazon S3 or EFS.
+8C4FFF;Networking-and-Content-Delivery;Amazon;API Gateway;;API-Gateway;Fully managed service for creating, deploying, and managing REST, WebSocket, and HTTP APIs.
+8C4FFF;Networking-and-Content-Delivery;Amazon;CloudFront;;CloudFront;A Content Delivery Network (CDN) that speeds up website access by caching content at AWS edge locations.
+8C4FFF;Networking-and-Content-Delivery;AWS;Direct Connect;;Direct-Connect;Establishes a private, dedicated connection from on-premises data centers to AWS for higher performance and security.
+8C4FFF;Networking-and-Content-Delivery;AWS;Global Accelerator;;Global-Accelerator;Improves application availability and performance by routing traffic through AWS's global network rather than the public internet.
+8C4FFF;Networking-and-Content-Delivery;Amazon;Route 53;;Route-53;A scalable domain name system (DNS) that routes users to AWS services and other websites efficiently.
+8C4FFF;Networking-and-Content-Delivery;Amazon;Virtual Private Cloud;VPC;Virtual-Private-Cloud;Allows users to create isolated private networks within AWS with custom IP addressing and security.
+8C4FFF;Networking-and-Content-Delivery;AWS;VPN;;VPN;Provides secure connectivity between on-premises networks and AWS via Site-to-Site VPN or Client VPN.
+DD344C;Security-Identity-Compliance;AWS;Artifact;;Artifact;Provides access to AWS compliance reports and security documents (SOC, ISO, PCI, etc.).
+DD344C;Security-Identity-Compliance;AWS;Audit Manager;;Audit-Manager;Automates compliance audits by collecting AWS usage data and mapping it to audit standards.
+DD344C;Security-Identity-Compliance;AWS;Certificate Manager;ACM;Certificate-Manager;Simplifies the provisioning and management of SSL/TLS certificates for secure communications.
+DD344C;Security-Identity-Compliance;AWS;CloudHSM;;CloudHSM;A managed hardware security module (HSM) for generating and managing encryption keys.
+DD344C;Security-Identity-Compliance;Amazon;Cognito;;Cognito;Provides user authentication, authorization, and user management for web and mobile apps.
+DD344C;Security-Identity-Compliance;Amazon;Detective;;Detective;Helps investigate and analyze potential security threats using machine learning and data visualization.
+DD344C;Security-Identity-Compliance;AWS;Directory Service;;Directory-Service;Provides Microsoft Active Directory (AD) integration for managing users and permissions in AWS.
+DD344C;Security-Identity-Compliance;AWS;Firewall Manager;;Firewall-Manager;Centralized management of AWS WAF, AWS Shield, and network firewalls across multiple accounts.
+DD344C;Security-Identity-Compliance;Amazon;GuardDuty;;GuardDuty;A threat detection service that continuously monitors AWS accounts for malicious activity.
+DD344C;Security-Identity-Compliance;AWS;Identity and Access Management;IAM;Identity-and-Access-Management;Manages user roles, permissions, and access controls for AWS resources.
+DD344C;Security-Identity-Compliance;AWS;IAM Identity Center (AWS;;IAM-Identity-Center-(AWS;Provides centralized single sign-on (SSO) access to AWS accounts and applications.
+DD344C;Security-Identity-Compliance;Amazon;Inspector;;Inspector;Automated security assessments to detect vulnerabilities and compliance risks in EC2 and container workloads.
+DD344C;Security-Identity-Compliance;AWS;Key Management Service;KMS;Key-Management-Service;Securely creates, manages, and controls cryptographic keys for AWS services.
+DD344C;Security-Identity-Compliance;Amazon;Macie;;Macie;Uses machine learning to detect and protect sensitive data (e.g., PII) stored in Amazon S3.
+DD344C;Security-Identity-Compliance;AWS;Network Firewall;;Network-Firewall;A stateful, managed firewall service for inspecting and filtering VPC network traffic.
+DD344C;Security-Identity-Compliance;AWS;Resource Access Manager (AWS;RAM;Resource-Access-Manager-(AWS;Enables organizations to share AWS resources securely across accounts.
+DD344C;Security-Identity-Compliance;AWS;Secrets Manager;;Secrets-Manager;Securely stores and rotates database credentials, API keys, and other secrets.
+DD344C;Security-Identity-Compliance;AWS;Security Hub;;Security-Hub;Aggregates security findings from AWS services and third-party tools to provide compliance insights.
+DD344C;Security-Identity-Compliance;AWS;Shield;;Shield;A DDoS protection service that safeguards AWS applications from large-scale attacks.
+DD344C;Security-Identity-Compliance;AWS;Web Application Firewall;WAF;Web-Application-Firewall;Protects web applications from common web exploits like SQL injection and cross-site scripting (XSS).
+8C4FFF;Serverless;AWS;Fargate;;Fargate;A serverless compute engine for containers, running workloads without managing EC2 instances.
+8C4FFF;Serverless;AWS;Lambda;;Lambda;Executes event-driven, serverless functions that automatically scale with demand.
+7AA116;Storage;AWS;Backup;;Backup;Automates backup management across AWS services like EBS, RDS, DynamoDB, and S3.
+7AA116;Storage;Amazon;Elastic Block Store;EBS;Elastic-Block-Store;Provides persistent block storage for EC2 instances, like an external hard drive.
+7AA116;Storage;Amazon;Elastic File System;EFS;Elastic-File-System;A scalable, fully managed file storage system for Linux-based applications.
+7AA116;Storage;AWS;Elastic Disaster Recovery;DRS;Elastic-Disaster-Recovery;Helps recover on-premises or AWS workloads in case of outages.
+7AA116;Storage;Amazon;FSx;;FSx;Managed file storage for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS.
+7AA116;Storage;Amazon;Simple Storage Service;S3;Simple-Storage-Service;Scalable object storage for storing and retrieving data from anywhere.
+7AA116;Storage;Amazon;S3 Glacier;;S3-Glacier;Low-cost, long-term archival storage with retrieval options from minutes to hours.
+7AA116;Storage;AWS;Storage Gateway;;Storage-Gateway;A hybrid storage service that connects on-premises environments to AWS cloud storage.
