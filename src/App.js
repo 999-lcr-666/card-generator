@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import './App.css';
 import myCardImage from './template-front.png';
+import loadImages from './imageLoader';
+
 
 const CardGenerator = () => {
   const [numCards, setNumCards] = useState(18);
@@ -30,6 +32,43 @@ const CardGenerator = () => {
 
   const displayWidth = unit === "cm" ? (cardWidth * 2.54).toFixed(2) : cardWidth;
   const displayHeight = unit === "cm" ? (cardHeight * 2.54).toFixed(2) : cardHeight;
+
+
+
+  // Load the images
+  const images = loadImages();
+  console.log('Loaded images:', images);
+
+
+  // Example of card data with image names
+  // Create card data dynamically based on available images
+  const cardData = images.map((image, index) => ({
+    name: `Card ${index + 1}`,
+    imageName: image?.fileName || 'default-image.jpg',  // Use a default image if no fileName
+  }));
+  console.log('Card Data:', cardData);
+
+
+  // Function to get the image path
+  const getCardImage = (imageName) => {
+    // Log to see if imageName is what you expect
+    console.log('Received imageName:', imageName);
+
+    // Default fallback if imageName is not valid
+    if (!imageName) {
+      console.log('No image name provided, using default image.');
+      return '/images/default-image.jpg';  // Your fallback image
+    }
+
+    // Generate the image path
+    const imagePath = `/images/${imageName}`;
+    console.log('Generated Image Path:', imagePath);
+    return imagePath;
+  };
+
+
+
+
 
   return (
     <div>
@@ -127,8 +166,9 @@ const CardGenerator = () => {
             {templateType === "image" ? (
               <>
                 <img
-                  src={myCardImage}
-                  alt={text}
+                  src={getCardImage(cardData[index]?.imageName)} // Dynamically set image path
+                  alt={cardData[index]?.name}
+                  onError={(e) => (e.target.src = myCardImage)} // Fallback to broken image if error
                   style={{
                     maxWidth: "90%",
                     maxHeight: "60%",
@@ -136,7 +176,9 @@ const CardGenerator = () => {
                     marginBottom: "10px", // Ensure some space between image and title
                   }}
                 />
-                <div className="title">{text}</div>
+                <div className="title">
+                  {cardData[index]?.imageName.split('.')[0].replace(/-/g, ' ')} {/* Display image name without extension */}
+                </div>
               </>
             ) : (
               <>
