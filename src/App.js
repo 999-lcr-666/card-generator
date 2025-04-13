@@ -1,8 +1,7 @@
 import Papa from 'papaparse';
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css';
 import loadImages from './imageLoader';
-
 
 const CardGenerator = () => {
   const [numCards, setNumCards] = useState(18);
@@ -10,140 +9,66 @@ const CardGenerator = () => {
   const [cardHeight, setCardHeight] = useState(2.1);
   const [cardColor, setCardColor] = useState("#f0f0f0");
   const [borderColor, setBorderColor] = useState("#000");
-  const [templateType, setTemplateType] = useState("image"); // "image" or "text"
-  const [csvData, setCsvData] = useState([]); // pour l'import des csv
-  const [loading, setLoading] = useState(true);  // Track loading state
+  const [templateType, setTemplateType] = useState("image");
+  const [csvData, setCsvData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [unit, setUnit] = useState("in");
+  const [direction, setDirection] = useState("ltr");
 
+  const convertToInches = (value) => unit === "cm" ? value / 2.54 : value;
 
-  const cards = Array.from({ length: numCards }, (value, index) => `Card ${index + 1}`);
-
-  const [unit, setUnit] = useState("in"); // 'in' or 'cm'
-
-  const convertToInches = (value) => {
-    return unit === "cm" ? value / 2.54 : value;
-  };
-
-  const handleWidthChange = (e) => {
-    const val = parseFloat(e.target.value) || 0;
-    setCardWidth(convertToInches(val));
-  };
-
-  const handleHeightChange = (e) => {
-    const val = parseFloat(e.target.value) || 0;
-    setCardHeight(convertToInches(val));
-  };
+  const handleWidthChange = (e) => setCardWidth(convertToInches(parseFloat(e.target.value) || 0));
+  const handleHeightChange = (e) => setCardHeight(convertToInches(parseFloat(e.target.value) || 0));
 
   const displayWidth = unit === "cm" ? (cardWidth * 2.54).toFixed(2) : cardWidth;
   const displayHeight = unit === "cm" ? (cardHeight * 2.54).toFixed(2) : cardHeight;
 
-
-// ======================================
-// Load images from CSV
-// ======================================
-
-/*
-useEffect(() => {
-  fetch('/aws.csv')
-    .then(response => response.text())
-    .then(text => {
-      const result = Papa.parse(text, { header: true });
-      setCsvData(result.data); // array of objects
-      console.log('CSV Parsed:', result.data);
-    });
-}, []);
-*/
-
-useEffect(() => {
-  fetch('/aws4.csv')
-    .then((response) => {
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      return response.text();
-    })
-    .then((text) => {
-      const result = Papa.parse(text, {
-        header: true,
-        skipEmptyLines: true,  // Skip any empty lines
-      });
-      // Sort the data by a specific column (e.g., "serviceName")
-      const sortedData = result.data.sort((a, b) => {
-        const nameA = a.title ? a.title.toUpperCase() : ''; // Default to empty string if undefined
-        const nameB = b.title ? b.title.toUpperCase() : ''; // Default to empty string if undefined
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0; // If they're the same, leave their order unchanged
-      });
-      setCsvData(sortedData);
-      console.log('CSV Parsed:', sortedData);
-    })
-    .catch((error) => {
-      console.error('Error loading or parsing CSV:', error);
-    })
-    .finally(() => {
-      setLoading(false);  // Set loading to false once fetch is done
-    });
-}, []);
-
-if (loading) {
-  return <div>Loading...</div>; // Show loading message while waiting for data
-}
-
-
-
-
-
-// ======================================
-// Load the images
-// ======================================
+  useEffect(() => {
+    fetch('/aws4.csv')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.text();
+      })
+      .then((text) => {
+        const result = Papa.parse(text, { header: true, skipEmptyLines: true });
+        const sortedData = result.data.sort((a, b) => {
+          const nameA = (a.title || '').toUpperCase();
+          const nameB = (b.title || '').toUpperCase();
+          return nameA.localeCompare(nameB);
+        });
+        setCsvData(sortedData);
+      })
+      .catch((error) => console.error('CSV load error:', error))
+      .finally(() => setLoading(false));
+  }, []);
 
   const images = loadImages();
-  console.log('Loaded images:', images);
 
-// Find matching CSV row by service name
-const serviceName = csvData.find(row =>
-    row.serviceName
-);
-
-
-  // Example of card data with image names
-  // Create card data dynamically based on available images
-  const cardData = images.map((image, index) => ({
-    name: `Card ${index + 1}`,
-    imageName: image?.filename || 'default-image.jpg',  // Use a default image if no fileName
-    serviceName: serviceName,
-  }));
-  console.log('Card Data:', cardData);
-
-
-  // Function to get the image path
-  const getCardImage = (cathegory,imageName) => {
-    // Log to see if imageName is what you expect
-    console.log('Received imageName:', imageName);
-
-    // Default fallback if imageName is not valid
-    if (!imageName) {
-      console.log('No image name provided, using default image.');
-      return '/images/default-image.jpg';  // Your fallback image
-    }
-
-    // Generate the image path
-    const imagePath = `/images/${cathegory}/${imageName}.png`;
-    console.log('Generated Image Path:', imagePath);
-    return imagePath;
+  const getCardImage = (category, imageName) => {
+    if (!imageName) return '/images/default-image.jpg';
+    return `/images/${category}/${imageName}.png`;
   };
 
-
-
+  if (loading) return <div>Loading...</div>;
 
   return (
+
+    
+
+
     <div>
       <div className="no-print">
+      <header className="app-header">
+        <h1>Card Generator</h1>
+        <p>Create and print beautiful cards with custom styles & images.</p>
+      </header>
+      </div>
+      <div className="no-print">
+
+
         <label>
           Number of Cards:
-          <input
-            type="number"
-            value={numCards}
-            onChange={(e) => setNumCards(parseInt(e.target.value) || 1)}
-          />
+          <input type="number" value={numCards} onChange={(e) => setNumCards(parseInt(e.target.value) || 1)} />
         </label>
         <label>
           Unit:
@@ -152,48 +77,34 @@ const serviceName = csvData.find(row =>
             <option value="cm">centimeters</option>
           </select>
         </label>
-
         <label>
           Card Width ({unit}):
-          <input
-            type="number"
-            step="0.1"
-            value={displayWidth}
-            onChange={handleWidthChange}
-          />
+          <input type="number" step="0.1" value={displayWidth} onChange={handleWidthChange} />
         </label>
-
         <label>
           Card Height ({unit}):
-          <input
-            type="number"
-            step="0.1"
-            value={displayHeight}
-            onChange={handleHeightChange}
-          />
+          <input type="number" step="0.1" value={displayHeight} onChange={handleHeightChange} />
         </label>
         <label>
           Background Color:
-          <input
-            type="color"
-            value={cardColor}
-            onChange={(e) => setCardColor(e.target.value)}
-          />
+          <input type="color" value={cardColor} onChange={(e) => setCardColor(e.target.value)} />
         </label>
         <label>
           Border Color:
-          <input
-            type="color"
-            value={borderColor}
-            onChange={(e) => setBorderColor(e.target.value)}
-          />
+          <input type="color" value={borderColor} onChange={(e) => setBorderColor(e.target.value)} />
         </label>
-
         <label>
           Select Template:
           <select value={templateType} onChange={(e) => setTemplateType(e.target.value)}>
             <option value="image">Image</option>
             <option value="text">Text</option>
+          </select>
+        </label>
+        <label>
+          Direction:
+          <select value={direction} onChange={(e) => setDirection(e.target.value)}>
+            <option value="ltr">Left to Right</option>
+            <option value="rtl">Right to Left</option>
           </select>
         </label>
       </div>
@@ -203,13 +114,13 @@ const serviceName = csvData.find(row =>
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(2, ${cardWidth}in)`,
-          gridTemplateRows: `repeat(auto-fill, ${cardHeight}in)`,
-          gap: "0px", // No gap between cards
+          gap: "0px",
           width: `${2 * cardWidth}in`,
           margin: "0 auto",
+          direction: direction,
         }}
       >
-        {cards.map((text, index) => (
+        {csvData.slice(0, numCards).map((data, index) => (
           <div
             key={index}
             className="card"
@@ -221,88 +132,59 @@ const serviceName = csvData.find(row =>
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              borderRadius: "0px",
-              boxSizing: "border-box",
-              overflow: "hidden", // Ensure image fits
+              overflow: "hidden",
               flexDirection: "column",
             }}
           >
             {templateType === "image" ? (
               <>
                 <img
-                  src={getCardImage(csvData[index]?.cathegory, csvData[index]?.filename)} // Dynamically set image path
-                  alt={csvData[index]?.filename}
-                  onError={(e) => (e.target.src = "/images/broken-image.png")} // Fallback to broken image if error
+                  src={getCardImage(data.cathegory, data.filename)}
+                  alt={data.filename}
+                  onError={(e) => (e.target.src = "/images/broken-image.png")}
                   style={{
                     maxWidth: "90%",
                     maxHeight: "60%",
                     objectFit: "contain",
-                    marginBottom: "10px", // Ensure some space between image and title
+                    marginBottom: "10px",
                   }}
                 />
-                <div className="title"
-                style={{ color: `#${csvData[index]?.color?.replace('#', '')}` }}
-                >
-                  {csvData[index]?.filename.split('.')[0].replace(/-/g, ' ')} {/* Display image name without extension */}
+                <div className="title" style={{ color: `#${data.color?.replace('#', '')}` }}>
+                  {data.filename?.split('.')[0].replace(/-/g, ' ') || "Unnamed"}
                 </div>
               </>
             ) : (
               <>
-                  <div
-                    className="title"
-                    style={{ color: `#${csvData[index]?.color?.replace('#', '')}` }}
-                  >{csvData[index]?.title || "No Title"}</div>
-                  <div className="description">
-                    {csvData[index]?.description || "No description available."}
-                  </div>
+                <div className="title" style={{ color: `#${data.color?.replace('#', '')}` }}>
+                  {data.title || "No Title"}
+                </div>
+                <div className="description" style={{ direction: "ltr", unicodeBidi: "plaintext" }}>
+                  {data.description || "No description available."}
+                </div>
               </>
             )}
 
-            {/* Corner lines for printing */}
-            <div
-              style={{
+            {/* Corners */}
+            {["top-left", "top-right", "bottom-left", "bottom-right"].map((corner) => {
+              const styles = {
                 position: "absolute",
-                top: 0,
-                left: 0,
                 width: "10px",
                 height: "10px",
-                borderTop: `1px solid ${borderColor}`,
-                borderLeft: `1px solid ${borderColor}`,
-              }}
-            ></div>
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: "10px",
-                height: "10px",
-                borderTop: `1px solid ${borderColor}`,
-                borderRight: `1px solid ${borderColor}`,
-              }}
-            ></div>
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "10px",
-                height: "10px",
-                borderBottom: `1px solid ${borderColor}`,
-                borderLeft: `1px solid ${borderColor}`,
-              }}
-            ></div>
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                width: "10px",
-                height: "10px",
-                borderBottom: `1px solid ${borderColor}`,
-                borderRight: `1px solid ${borderColor}`,
-              }}
-            ></div>
+                border: `1px solid ${borderColor}`,
+              };
+              switch (corner) {
+                case "top-left":
+                  return <div key={corner} style={{ ...styles, top: 0, left: 0, borderBottom: 0, borderRight: 0 }} />;
+                case "top-right":
+                  return <div key={corner} style={{ ...styles, top: 0, right: 0, borderBottom: 0, borderLeft: 0 }} />;
+                case "bottom-left":
+                  return <div key={corner} style={{ ...styles, bottom: 0, left: 0, borderTop: 0, borderRight: 0 }} />;
+                case "bottom-right":
+                  return <div key={corner} style={{ ...styles, bottom: 0, right: 0, borderTop: 0, borderLeft: 0 }} />;
+                default:
+                  return null;
+              }
+            })}
           </div>
         ))}
       </div>

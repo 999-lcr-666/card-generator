@@ -51,7 +51,7 @@ C925D1;Developer-Tools;AWS;CodeStar;;CodeStar;A platform that helps quickly deve
 C925D1;Developer-Tools;AWS;X-Ray;;X-Ray;A tracing service that helps analyze and debug distributed applications by visualizing service interactions.
 01A88D;End-User-Computing;Amazon;AppStream;;AppStream;A managed service that securely delivers virtualized applications to users through a web browser.
 01A88D;End-User-Computing;Amazon;WorkSpaces;;WorkSpaces;A fully managed Desktop-as-a-Service (DaaS) that provides cloud-based virtual desktops.
-01A88D;End-User-Computing;Amazon;WorkSpaces Web;;WorkSpaces-Web;A secure browser-based access solution for corporate web applications, reducing endpoint risks.
+01A88D;End-User-Computing;Amazon;WorkSpaces Web;;WorkSpaces;A secure browser-based access solution for corporate web applications, reducing endpoint risks.
 DD344C;Front-End-Web-Mobile;AWS;Amplify;;Amplify;A set of tools and services to build, deploy, and host scalable mobile and web applications. Supports authentication, APIs, and real-time data.
 DD344C;Front-End-Web-Mobile;AWS;AppSync;;AppSync;A GraphQL API service that allows applications to retrieve only the necessary data from AWS data sources like DynamoDB and Lambda.
 DD344C;Front-End-Web-Mobile;AWS;Device Farm;;Device-Farm;A testing service that allows developers to test mobile apps on real devices hosted in the AWS cloud.
@@ -116,7 +116,7 @@ DD344C;Security-Identity-Compliance;AWS;Resource Access Manager;RAM;Resource-Acc
 DD344C;Security-Identity-Compliance;AWS;Secrets Manager;;Secrets-Manager;Securely stores and rotates database credentials, API keys, and other secrets.
 DD344C;Security-Identity-Compliance;AWS;Security Hub;;Security-Hub;Aggregates security findings from AWS services and third-party tools to provide compliance insights.
 DD344C;Security-Identity-Compliance;AWS;Shield;;Shield;A DDoS protection service that safeguards AWS applications from large-scale attacks.
-DD344C;Security-Identity-Compliance;AWS;Web Application Firewall;WAF;Web-Application-Firewall;Protects web applications from common web exploits like SQL injection and cross-site scripting (XSS).
+DD344C;Security-Identity-Compliance;AWS;Web Application Firewall;WAF;WAF;Protects web applications from common web exploits like SQL injection and cross-site scripting (XSS).
 8C4FFF;Compute;AWS;Fargate;;Fargate;A serverless compute engine for containers, running workloads without managing EC2 instances.
 8C4FFF;Compute;AWS;Lambda;;Lambda;Executes event-driven, serverless functions that automatically scale with demand.
 7AA116;Storage;AWS;Backup;;Backup;Automates backup management across AWS services like EBS, RDS, DynamoDB, and S3.

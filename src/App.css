@@ -75,3 +75,28 @@ body {
   text-align: justify; /* Justify the paragraph text */
   max-width: 90%; /* Optional: limit width for better layout */
 }
+
+
+
+.app-header {
+  width: 100%;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
