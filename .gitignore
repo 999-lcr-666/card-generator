@@ -6,6 +6,11 @@
 /.pnp
 .pnp.js
 
+# specific files
+/public/images
+/public/aws4 copy.csv
+/public/aws.csv
+
 # testing
 /coverage
 
