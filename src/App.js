@@ -44,6 +44,18 @@ const CardGenerator = () => {
 
   const images = loadImages();
 
+  const predefinedSizes = {
+    poker: { width: 2.5, height: 3.5 },
+    bridge: { width: 2.25, height: 3.5 },
+    mini: { width: 1.75, height: 2.5 },
+    jumbo: { width: 3.5, height: 5 },
+    tarot: { width: 2.75, height: 4.75 },
+    square: { width: 2.5, height: 2.5 },
+  };
+
+
+
+
   const getCardImage = (category, imageName) => {
     if (!imageName) return '/images/default-image.jpg';
     return `/images/${category}/${imageName}.png`;
@@ -53,15 +65,15 @@ const CardGenerator = () => {
 
   return (
 
-    
+
 
 
     <div>
       <div className="no-print">
-      <header className="app-header">
-        <h1>Card Generator</h1>
-        <p>Create and print beautiful cards with custom styles & images.</p>
-      </header>
+        <header className="app-header">
+          <h1>Card Generator</h1>
+          <p>Create and print beautiful cards with custom styles & images.</p>
+        </header>
       </div>
       <div className="no-print">
 
@@ -70,6 +82,31 @@ const CardGenerator = () => {
           Number of Cards:
           <input type="number" value={numCards} onChange={(e) => setNumCards(parseInt(e.target.value) || 1)} />
         </label>
+
+
+        <label>
+  Predefined Card Size:
+  <select
+    onChange={(e) => {
+      const size = predefinedSizes[e.target.value];
+      if (size) {
+        setCardWidth(size.width);
+        setCardHeight(size.height);
+      }
+    }}
+  >
+    <option value="">-- Select Size --</option>
+    <option value="poker">Poker Card</option>
+    <option value="bridge">Bridge Card</option>
+    <option value="mini">Mini Playing Cards</option>
+    <option value="jumbo">Jumbo Playing Cards</option>
+    <option value="tarot">Tarot Cards</option>
+    <option value="square">Square Playing Cards</option>
+  </select>
+</label>
+
+
+
         <label>
           Unit:
           <select value={unit} onChange={(e) => setUnit(e.target.value)}>
@@ -81,6 +118,21 @@ const CardGenerator = () => {
           Card Width ({unit}):
           <input type="number" step="0.1" value={displayWidth} onChange={handleWidthChange} />
         </label>
+
+        <label>
+  Invert Dimensions:
+  <button
+    type="button"
+    onClick={() => {
+      setCardWidth(cardHeight); // Swap the width and height
+      setCardHeight(cardWidth); // Swap the height and width
+    }}
+  >
+    ↔️
+  </button>
+</label>
+
+
         <label>
           Card Height ({unit}):
           <input type="number" step="0.1" value={displayHeight} onChange={handleHeightChange} />

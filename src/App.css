@@ -36,9 +36,11 @@ body {
   }
 
   .cards-container {
-    margin: 0; /* Remove any margin around the cards container */
-    padding: 0; /* Ensure there's no padding either */
-    page-break-inside: avoid;
+    display: grid;
+    grid-template-columns: repeat(2, 3.4in); /* Replace with dynamic value */
+    margin: 0 auto;
+    width: 100%;
+    justify-items: stretch; /* Stretch cards to fill their grid cell */
   }
 
   .card img {
