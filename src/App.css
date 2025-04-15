@@ -1,3 +1,11 @@
+/* === Base Styling === */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Keeps full app scrollbar hidden during normal view */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,77 +16,59 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.no-print {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-}
-
-.no-print label {
+.app-container {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  height: 100vh;
 }
 
-@media print {
-  .no-print {
-    display: none !important;
-  }
-
-  .card {
-    margin: 0; /* Ensure no margin between cards */
-    padding: 0; /* Ensure no padding inside cards */
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  .cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 3.4in); /* Replace with dynamic value */
-    margin: 0 auto;
-    width: 100%;
-    justify-items: stretch; /* Stretch cards to fill their grid cell */
-  }
-
-  .card img {
-    max-width: 90%;
-    max-height: 70%;
-    object-fit: contain;
-  }
-  
-  .card h3 {
-    color: red;
-    text-align: center;
-    margin: 0;
-  }
-  
-  .card p {
-    text-align: justify;
-    margin: 10px 10px;
-    line-height: 1.5;
-    text-align-last: justify; /* Ensures the last line is justified */
-  }
+.content-wrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
 }
 
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Card Styling */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.card img {
+  max-width: 90%;
+  max-height: 70%;
+  object-fit: contain;
+}
 
 .card .title {
-  color: red; /* Title color */
-  font-size: 1em; /* Title size */
-  font-weight: bold; /* Optional: make the title bold */
-  /*margin-bottom: 15px; Space below the title */
+  color: red;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 .card .description {
-  margin: 10px 0; /* Add margin between paragraphs */
-  line-height: 1; /* Optional: increases line height for readability */
-  text-align: justify; /* Justify the paragraph text */
-  max-width: 90%; /* Optional: limit width for better layout */
+  margin: 10px 0;
+  line-height: 1;
+  text-align: justify;
+  max-width: 90%;
 }
 
-
+/* === Header === */
 
 .app-header {
   width: 100%;
@@ -101,4 +91,82 @@ body {
   margin: 8px 0 0;
   font-size: 1rem;
   opacity: 0.9;
+}
+
+/* === Hide elements when printing === */
+
+@media print {
+  .no-print,
+  .app-header,
+  .left-menu {
+    display: none !important;
+  }
+
+  html, body, #root {
+    height: auto;
+    overflow: visible !important;
+  }
+
+  .app-container,
+  .content-wrapper,
+  .main-page-container,
+  .scrollable-content {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .cards-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 0; /* no margin between rows or columns */
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: auto;
+    margin: 0 !important; /* no margin between rows */
+  }
+
+  /* Hide scrollbars on all browsers */
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .scrollable-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* === Layout === */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.left-menu {
+  width: 250px;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-right: 1px solid #ccc;
+  background-color: #f8f8f8;
+  overflow: auto;
+}
+
+.main-page-container {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable-content {
+  flex-grow: 1;
+  overflow-y: auto;
 }
