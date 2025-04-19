@@ -8,7 +8,8 @@ const LeftMenu = ({
   borderColor, setBorderColor,
   templateType, setTemplateType,
   unit, setUnit,
-  direction, setDirection
+  direction, setDirection,
+  cardsPerRow, setCardsPerRow
 }) => {
   const convertToInches = (value) => unit === "cm" ? value / 2.54 : value;
   const displayWidth = unit === "cm" ? (cardWidth * 2.54).toFixed(2) : cardWidth;
@@ -26,6 +27,21 @@ const LeftMenu = ({
   return (
     <div className="left-menu no-print">
       <h3>Settings</h3>
+
+
+      <label>
+  Cards per Row:
+  <input
+    type="number"
+    value={cardsPerRow}
+    min={1}
+    max={10}
+    onChange={(e) => setCardsPerRow(parseInt(e.target.value))}
+  />
+</label>
+
+
+
       <label>
         Number of Cards:
         <input type="number" value={numCards} onChange={(e) => setNumCards(parseInt(e.target.value))} />

@@ -10,7 +10,8 @@ const MainPage = ({
   cardColor,
   borderColor,
   templateType,
-  direction
+  direction,
+  cardsPerRow
 }) => {
   const getCardImage = (category, imageName) => {
     if (!imageName) return '/images/default-image.jpg';
@@ -26,9 +27,9 @@ const MainPage = ({
       className="cards-container"
       style={{
         display: "grid",
-        gridTemplateColumns: `repeat(2, ${cardWidth}in)`,
+        gridTemplateColumns: `repeat(${cardsPerRow}, ${cardWidth}in)`,
+        width: `${cardsPerRow * cardWidth}in`,
         gap: "0px",
-        width: `${2 * cardWidth}in`,
         margin: "0 auto",
         direction: direction,
       }}
